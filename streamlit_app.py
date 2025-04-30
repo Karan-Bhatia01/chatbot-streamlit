@@ -16,14 +16,11 @@ st.markdown("""
         font-family: 'Arial', sans-serif;
     }
     
-    /* Center the chat container */
-    .chat-container {
+    /* Center the main content */
+    .main-content {
         max-width: 900px;
         margin: 0 auto;
         padding: 20px;
-        background-color: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     
     /* Main title styling with gradient */
@@ -52,6 +49,18 @@ st.markdown("""
         text-align: center;
         margin-bottom: 30px;
         line-height: 1.6;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Chat container styling */
+    .chat-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
     }
     
     /* Chat message styling */
@@ -124,52 +133,16 @@ st.markdown("""
         border-radius: 10px;
         background-color: #f5f5f5;
     }
-    
-    /* Sidebar styling */
-    .css-1d391kg {
-        background-color: #e3f2fd;
-        border-right: 2px solid #1976d2;
-    }
-    .sidebar-text {
-        font-size: 16px;
-        color: #333;
-        line-height: 1.5;
-    }
-    .sidebar-link {
-        color: #1976d2;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .sidebar-link:hover {
-        color: #0d47a1;
-        text-decoration: underline;
-    }
     </style>
 """, unsafe_allow_html=True)
 
 # API URL (updated for deployment)
 API_URL = "https://chatbot-flask-b8pl.onrender.com/api/query"
 
-# Sidebar
-with st.sidebar:
-    st.header("About CHATbot.com")
-    st.markdown("""
-        <p class="sidebar-text">
-            CHATbot.com is your coding assistant built with Streamlit and powered by a Flask API. Ask coding questions, debug, or learn new concepts with ease!
-        </p>
-        <p class="sidebar-text">
-            Powered by: <a href="https://chatbot-flask-b8pl.onrender.com/" target="_blank" class="sidebar-link">Flask API</a>
-        </p>
-    """, unsafe_allow_html=True)
-
 # Main header and introduction
 st.markdown('<div class="main-title">CHATbot.com</div>', unsafe_allow_html=True)
 st.markdown('<div class="header-text">Your Coding Assistant in 2025</div>', unsafe_allow_html=True)
-st.markdown("""
-    <div class="intro-text">
-        In today’s coding world, AI tools are revolutionizing development. From AI-assisted coding to low-code platforms, developers are building faster and smarter. CHATbot.com helps you navigate this landscape by providing instant coding solutions. Whether you're debugging, learning, or building projects, we’ve got you covered!
-    </div>
-""", unsafe_allow_html=True)
+st.markdown('<div class="intro-text">AI tools are transforming coding with faster, smarter solutions. CHATbot.com offers instant help for debugging, learning, or building projects.</div>', unsafe_allow_html=True)
 
 # Layout with two columns: Chat on the left, GenAI Growth Chart on the right
 col1, col2 = st.columns([2, 1])
@@ -181,7 +154,7 @@ with col1:
         st.session_state.chat = []
 
     with st.container():
-        st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
+        st.markdown('<div class="chat-container">', unsafe_allow_html=True)
 
         # Store chat messages
         if "chat" not in st.session_state:
@@ -267,7 +240,7 @@ print(add(x, y))  # Prints: 10
                         st.markdown(f'<div class="response-text">Error: {str(e)}</div>', unsafe_allow_html=True)
                     st.session_state.chat.append({"role": "assistant", "text": f"Error: {str(e)}", "code": []})
 
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # GenAI Growth Chart Section (Right Column)
 with col2:
@@ -278,7 +251,7 @@ with col2:
         # Expander for GenAI growth chart
         with st.expander("View GenAI Market Growth (2020-2032)"):
             st.markdown("**Generative AI Market Size Over the Years**")
-            st.markdown("The chart below shows the explosive growth of the Generative AI market, projected to reach $1.3 trillion by 2032.")
+            st.markdown("The chart below shows the growth of the GenAI market, projected to reach $1.3 trillion by 2032.")
             
             # Data for GenAI market size (in billion USD)
             genai_data = pd.DataFrame({
@@ -303,6 +276,6 @@ print(result)  # Output: 25
         # Brief explanation
         st.markdown("""
         **Understanding the Code**  
-        The snippet above defines a `square` function that takes a number and returns its square. This is a simple example of how functions can be used to perform calculations in Python.
+        The `square` function takes a number and returns its square.
         """)
         st.markdown('</div>', unsafe_allow_html=True)
