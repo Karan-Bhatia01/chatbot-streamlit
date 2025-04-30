@@ -7,68 +7,68 @@ import numpy as np
 # Set up the page with a wide layout for better responsiveness
 st.set_page_config(page_title="CHATbot.com", layout="wide")
 
-# Custom CSS for styling (simplified)
-st.markdown(f"""
+# Custom CSS for styling
+st.markdown("""
     <style>
-    .stApp {{
+    .stApp {
         background: linear-gradient(to bottom right, #000000, #222222);
         color: #1DCD9F;
         font-family: monospace;
-    }}
-    .chat-container {{
+    }
+    .chat-container {
         max-width: 900px;
         margin: 20px auto;
         padding: 20px;
         background-color: #222222;
         border-radius: 10px;
         border: 1px solid #169976;
-    }}
-    .main-title {{
+    }
+    .main-title {
         font-size: 48px;
         font-weight: bold;
         text-align: center;
         margin-bottom: 20px;
         color: #1DCD9F;
-    }}
-    .header-text {{
+    }
+    .header-text {
         font-size: 24px;
         color: #169976;
         text-align: center;
         margin-bottom: 20px;
-    }}
-    .intro-text {{
+    }
+    .intro-text {
         font-size: 16px;
         color: #1DCD9F;
         text-align: center;
         margin-bottom: 30px;
         line-height: 1.6;
-    }}
-    .stChatMessage {{
+    }
+    .stChatMessage {
         border-radius: 8px;
         padding: 12px;
         margin-bottom: 8px;
         color: #FFFFFF;
-    }}
-    div[data-testid="stChatMessage"][data-author="user"] {{
+    }
+    div[data-testid="stChatMessage"][data-author="user"] {
         background-color: #169976;
-    }}
-    div[data-testid="stChatMessage"][data-author="assistant"] {{
+    }
+    div[data-testid="stChatMessage"][data-author="assistant"] {
         background-color: #333333;
         border: 1px solid #1DCD9F;
-    }}
-    .stChatInput > div > textarea {{
+    }
+    .stChatInput > div > textarea {
         border: 2px solid #1DCD9F;
         border-radius: 8px;
         padding: 10px;
         font-size: 16px;
         color: #FFFFFF;
         background-color: #333333;
-    }}
-    .stChatInput > div > textarea:focus {{
+    }
+    .stChatInput > div > textarea:focus {
         border-color: #169976;
         box-shadow: 0 0 5px rgba(29, 205, 159, 0.5);
-    }}
-    .stButton > button {{
+    }
+    .stButton > button {
         background-color: #1DCD9F;
         color: #000000;
         border: none;
@@ -77,28 +77,37 @@ st.markdown(f"""
         font-size: 16px;
         cursor: pointer;
         transition: all 0.3s ease;
-    }}
-    .stButton > button:hover {{
+    }
+    .stButton > button:hover {
         background-color: #169976;
         transform: translateY(-1px);
-    }}
-    .chart-container {{
+    }
+    .chart-container {
         background-color: #222222;
         border-radius: 10px;
         padding: 20px;
         border: 1px solid #169976;
         margin-bottom: 20px;
-    }}
-    .stExpander {{
+    }
+    .stExpander {
         border: 1px solid #169976;
         border-radius: 8px;
         background-color: #333333;
         color: #1DCD9F;
-    }}
-    .stExpanderDetails {{
+    }
+    .stExpander p {
         color: #FFFFFF;
-    }}
-    """, unsafe_allow_html=True)
+    }
+    .stCodeBlock {
+        background-color: #333333;
+        border: 1px solid #169976;
+        border-radius: 8px;
+    }
+    .stMarkdown p {
+        color: #FFFFFF;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # API URL (updated for deployment)
 API_URL = "https://chatbot-flask-b8pl.onrender.com/api/query"
@@ -218,8 +227,8 @@ with col2:
 
         # Expander for GenAI growth chart
         with st.expander("View GenAI Market Growth (2020-2032)"):
-            st.markdown("**Generative AI Market Size Over the Years**", style={"color": "#FFFFFF"})
-            st.markdown("The chart below shows the explosive growth of the Generative AI market, projected to reach $1.3 trillion by 2032.", style={"color": "#FFFFFF"})
+            st.markdown('<div style="color:#FFFFFF;"><strong>Generative AI Market Size Over the Years</strong></div>', unsafe_allow_html=True)
+            st.markdown('<div style="color:#FFFFFF;">The chart below shows the explosive growth of the Generative AI market, projected to reach $1.3 trillion by 2032.</div>', unsafe_allow_html=True)
 
             # Data for GenAI market size (in billion USD)
             genai_data = pd.DataFrame({
@@ -230,7 +239,7 @@ with col2:
             st.line_chart(genai_data, use_container_width=True)
 
         # Code block with explanation
-        st.markdown("**Sample Code Snippet**", style={"color": "#FFFFFF"})
+        st.markdown('<div style="color:#FFFFFF;"><strong>Sample Code Snippet</strong></div>', unsafe_allow_html=True)
         st.code("""
 # Function to calculate the square of a number
 def square(num):
@@ -243,7 +252,9 @@ print(result)  # Output: 25
 
         # Brief explanation
         st.markdown("""
-        **Understanding the Code**
+        <div style="color:#FFFFFF;">
+        <strong>Understanding the Code</strong><br>
         The snippet above defines a `square` function that takes a number and returns its square. This is a simple example of how functions can be used to perform calculations in Python.
-        """, style={"color": "#FFFFFF"})
+        </div>
+        """, unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
