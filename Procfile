@@ -1,1 +1,1 @@
-web: gunicorn -b 0.0.0.0:$PORT --worker-class=gevent --workers=1 -m streamlit run streamlit_app.py --server.port=$PORT
+web: streamlit run streamlit_app.py --server.port $PORT
